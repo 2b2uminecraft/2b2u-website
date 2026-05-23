@@ -6,34 +6,39 @@
     <title>2builders2users - Anarchy Server</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; }
-        .logo-container { margin: 30px 0 20px 0; text-align: center; }
-        .logo-image { max-width: 90px; height: auto; display: block; margin: 0 auto; }
+        body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; font-size: 16px; }
+        .logo-container { margin: 40px 0 30px 0; text-align: center; }
+        .logo-image { max-width: 120px; height: auto; display: block; margin: 0 auto; }
         .wrapper { width: 100%; max-width: 1100px; padding: 0 20px; }
-        nav { background-color: #333333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        
+        nav { background-color: #333333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .nav-links { display: flex; list-style: none; flex-wrap: wrap; }
-        .nav-links li a { display: block; padding: 22px 24px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 14px; transition: all 0.2s; cursor: pointer; }
+        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.2s; cursor: pointer; }
         .nav-links li a.active, .nav-links li a:hover { color: #ffffff; background-color: #444444; }
         .nav-links li a.active { background-color: #ffffff; color: #333333; }
-        .shop-btn { background-color: #729fcf; color: white !important; padding: 22px 45px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 16px; }
+        
         .tab-content { display: none; }
-        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 25px; align-items: start; }
-        .showcase-slider-container { position: relative; height: 460px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; }
+        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; align-items: start; }
+        .showcase-slider-container { position: relative; height: 500px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; }
         .showcase-card { width: 100%; height: 100%; background-size: cover; background-position: center; transition: background-image 0.3s ease-in-out; }
         .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(114, 159, 207, 0.7); color: white; border: none; width: 40px; height: 40px; cursor: pointer; z-index: 10; font-size: 18px; }
-        .info-sidebar { background-color: #2b2b2b; padding: 40px 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; min-height: 460px; justify-content: space-between; }
-        .sidebar-title { color: #4ebd69; font-size: 16px; font-weight: bold; margin-bottom: 6px; }
-        .sidebar-desc { color: #a6a6a6; font-size: 13px; line-height: 1.7; margin-bottom: 30px; }
-        .player-counter { font-size: 18px; font-weight: bold; color: #ffffff; margin-bottom: 12px; }
-        .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 15px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
-        .content-panel { background-color: #2b2b2b; padding: 50px 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .panel-title { font-size: 32px; font-weight: bold; margin-bottom: 25px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 20px; }
-        .panel-text { color: #cccccc; font-size: 14px; line-height: 1.7; margin-bottom: 15px; }
-        .panel-list { list-style: none; color: #cccccc; font-size: 14px; line-height: 1.9; }
-        .panel-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        
+        .info-sidebar { background-color: #2b2b2b; padding: 45px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; min-height: 500px; justify-content: space-between; }
+        .sidebar-title { color: #4ebd69; font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .sidebar-desc { color: #a6a6a6; font-size: 15px; line-height: 1.8; margin-bottom: 40px; }
+        .player-counter { font-size: 20px; font-weight: bold; color: #ffffff; margin-bottom: 15px; }
+        .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
+        
+        .content-panel { background-color: #2b2b2b; padding: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .panel-title { font-size: 38px; font-weight: bold; margin-bottom: 30px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 25px; }
+        .panel-text { color: #cccccc; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+        .panel-list { list-style: none; color: #cccccc; font-size: 16px; line-height: 2; }
+        .panel-list li { margin-bottom: 15px; padding-left: 25px; position: relative; }
         .panel-list li::before { content: "•"; color: #4ebd69; font-weight: bold; position: absolute; left: 0; }
         .panel-list li strong { color: #ffffff; }
-        footer { margin-top: 50px; color: #666; font-size: 11px; width: 100%; max-width: 1100px; text-align: right; }
+
+        footer { margin-top: 60px; color: #666; font-size: 13px; width: 100%; max-width: 1100px; text-align: right; }
         @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -65,7 +70,7 @@
                 <div>
                     <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
                     <button class="ip-connect-btn" onclick="copyServerIP()">2B2U.NET</button>
-                    <div id="copy-text" style="font-size: 12px; color: #8c8c8c; text-align: center;">Click to copy IP</div>
+                    <div id="copy-text" style="font-size: 14px; color: #8c8c8c; text-align: center;">Click to copy IP</div>
                 </div>
             </div>
         </div>
@@ -94,14 +99,14 @@
 
         <div id="tab-commands" class="tab-content content-panel">
             <h2 class="panel-title">Useful Commands</h2>
-            <div class="panel-list">
+            <ul class="panel-list">
                 <li><strong>/kill</strong> - Kill yourself when stuck in a bad spawn location.</li>
                 <li><strong>/tpa &lt;player&gt;</strong> - Allows you to teleport to any player in the server as long as they accept it.</li>
                 <li><strong>/deathmessagestoggle</strong> - Toggles the death messages.</li>
                 <li><strong>/sethome</strong> - Set your home.</li>
                 <li><strong>/home</strong> - Teleport to your home.</li>
                 <li><strong>/delhome</strong> - Delete your current home.</li>
-            </div>
+            </ul>
         </div>
 
         <div id="tab-about" class="tab-content content-panel">
