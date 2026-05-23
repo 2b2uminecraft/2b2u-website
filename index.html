@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2builders2users - Anarchy Server</title>
     <style>
-        /* Animation Keyframes */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; font-size: 16px; }
         
@@ -17,25 +15,23 @@
         
         nav { background-color: #333333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .nav-links { display: flex; list-style: none; flex-wrap: wrap; }
-        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.3s ease; cursor: pointer; }
-        .nav-links li a:hover { color: #ffffff; background-color: #444444; transform: translateY(-2px); }
+        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .nav-links li a:hover { color: #ffffff; background-color: #444444; }
         .nav-links li a.active { background-color: #ffffff; color: #333333; }
-        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 16px; transition: background 0.3s; }
+        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .shop-btn:hover { background-color: #5d8ab5; }
         
         .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
         .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; align-items: start; }
         
-        .showcase-slider-container { position: relative; height: 500px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; }
-        .showcase-card { width: 100%; height: 100%; background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; }
-        
+        .info-sidebar { background-color: #2b2b2b; padding: 45px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
         .content-panel { background-color: #2b2b2b; padding: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .panel-title { font-size: 38px; font-weight: bold; margin-bottom: 30px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 25px; }
+        .panel-list { list-style: none; color: #cccccc; font-size: 16px; line-height: 2; margin-bottom: 20px; }
+        .panel-list li { margin-bottom: 15px; padding-left: 25px; position: relative; }
+        .panel-list li::before { content: "•"; color: #4ebd69; font-weight: bold; position: absolute; left: 0; }
         
-        .panel-list li { margin-bottom: 15px; padding-left: 25px; position: relative; transition: padding-left 0.3s; }
-        .panel-list li:hover { padding-left: 35px; color: #fff; }
-        
-        footer { margin-top: 60px; color: #666; font-size: 13px; text-align: right; }
+        footer { margin-top: 60px; color: #666; font-size: 13px; width: 100%; max-width: 1100px; text-align: right; }
     </style>
 </head>
 <body>
@@ -55,40 +51,58 @@
 
         <div id="tab-home" class="tab-content main-grid" style="display: grid;">
             <div class="showcase-slider-container">
-                <div class="showcase-card" id="background-slider"></div>
+                <div class="showcase-card" id="background-slider" style="height: 460px; background: #1a1a1a;"></div>
             </div>
             <div class="info-sidebar">
-                </div>
+                <div class="sidebar-title" style="color: #4ebd69; font-weight: bold;">2builders2users</div>
+                <p style="color: #a6a6a6; line-height: 1.8;">2b2u.net is a popular, modern Minecraft vanilla anarchy server. The map has been online for 5 years, preserving every player build and history.</p>
+            </div>
         </div>
 
         <div id="tab-modifications" class="tab-content content-panel">
             <h2 class="panel-title">Modifications & Mechanics</h2>
             <ul class="panel-list">
-                <li><strong>World Generation:</strong> Uses a modified vanilla generator.</li>
-                <li><strong>Monsters:</strong> Reworked spawning for higher density.</li>
+                <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
+                <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
+                <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0.</li>
+                <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
+                <li><strong>Item Duplication:</strong> Patched to prevent instability.</li>
             </ul>
         </div>
 
         <div id="tab-terms" class="tab-content content-panel">
             <h2 class="panel-title">Terms of Service</h2>
-            <p>Rules apply as per Minecraft/Xbox Community Standards. Harassment is prohibited. Evidence of reports to support@2b2t.org.</p>
+            <p>The server hosts the survival gamemode as provided by Mojang, an open ended sandbox, in which there are no inherent rules related to gameplay elements like PvP and griefing. All players must follow the Minecraft Usage Guidelines, the Minecraft Community Standards, and the Xbox Community Standards. Do not engage in any personal or real-life harassment, threats or bullying. Reports should be sent to support@2b2t.org.</p>
         </div>
 
+        <div id="tab-issues" class="tab-content content-panel">
+            <h2 class="panel-title">Server Issues</h2>
+            <p>High latency and queue times are a natural part of the anarchy experience.</p>
         </div>
+
+        <div id="tab-commands" class="tab-content content-panel">
+            <h2 class="panel-title">Useful Commands</h2>
+            <ul class="panel-list">
+                <li><strong>/kill</strong> - Kill yourself when stuck in a bad spawn location.</li>
+                <li><strong>/tpa &lt;player&gt;</strong> - Teleport to any player in the server as long as they accept it.</li>
+                <li><strong>/deathmessagestoggle</strong> - Toggles the death messages.</li>
+                <li><strong>/sethome /home /delhome</strong> - Manage your homes.</li>
+            </ul>
+        </div>
+
+        <div id="tab-about" class="tab-content content-panel">
+            <h2 class="panel-title">About</h2>
+            <p>The world is 5 years old, with a size exceeding 300 GB and over 7,000 unique player joins. Everything you see on 2b2u is the result of the players themselves.</p>
+        </div>
+    </div>
 
     <script>
         function switchTab(t) {
-            document.querySelectorAll('.tab-content').forEach(e => {
-                e.style.display = 'none';
-            });
+            document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
             document.querySelectorAll('.nav-links li a').forEach(e => e.classList.remove('active'));
-            
-            const target = document.getElementById('tab-' + t);
-            target.style.display = (t === 'home') ? 'grid' : 'block';
+            document.getElementById('tab-' + t).style.display = (t === 'home') ? 'grid' : 'block';
             document.getElementById('nav-' + t).classList.add('active');
         }
-        
-        // ... (Keep existing JS for player count and slider)
     </script>
 </body>
 </html>
