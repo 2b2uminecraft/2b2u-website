@@ -5,33 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2builders2users - Anarchy Server</title>
     <style>
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; font-size: 16px; }
-        
         .logo-container { margin: 40px 0 30px 0; text-align: center; }
         .logo-image { max-width: 120px; height: auto; display: block; margin: 0 auto; }
         .wrapper { width: 100%; max-width: 1100px; padding: 0 20px; }
         
         nav { background-color: #333333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .nav-links { display: flex; list-style: none; flex-wrap: wrap; }
-        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .nav-links li a:hover { color: #ffffff; background-color: #444444; }
+        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 16px; transition: all 0.2s; cursor: pointer; }
+        .nav-links li a.active, .nav-links li a:hover { color: #ffffff; background-color: #444444; }
         .nav-links li a.active { background-color: #ffffff; color: #333333; }
-        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .shop-btn:hover { background-color: #5d8ab5; }
+        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 16px; }
         
-        .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
+        .tab-content { display: none; }
         .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; align-items: start; }
+        .showcase-slider-container { position: relative; height: 500px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; }
+        .showcase-card { width: 100%; height: 100%; background-size: cover; background-position: center; transition: background-image 0.3s ease-in-out; }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(114, 159, 207, 0.7); color: white; border: none; width: 40px; height: 40px; cursor: pointer; z-index: 10; font-size: 18px; }
         
-        .info-sidebar { background-color: #2b2b2b; padding: 45px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .info-sidebar { background-color: #2b2b2b; padding: 45px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; min-height: 500px; justify-content: space-between; }
+        .sidebar-title { color: #4ebd69; font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .sidebar-desc { color: #a6a6a6; font-size: 15px; line-height: 1.8; margin-bottom: 40px; }
+        .player-counter { font-size: 20px; font-weight: bold; color: #ffffff; margin-bottom: 15px; }
+        .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
+        
         .content-panel { background-color: #2b2b2b; padding: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .panel-title { font-size: 38px; font-weight: bold; margin-bottom: 30px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 25px; }
+        .panel-text { color: #cccccc; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
         .panel-list { list-style: none; color: #cccccc; font-size: 16px; line-height: 2; margin-bottom: 20px; }
         .panel-list li { margin-bottom: 15px; padding-left: 25px; position: relative; }
         .panel-list li::before { content: "•"; color: #4ebd69; font-weight: bold; position: absolute; left: 0; }
-        
+        .panel-list li strong { color: #ffffff; }
+
         footer { margin-top: 60px; color: #666; font-size: 13px; width: 100%; max-width: 1100px; text-align: right; }
+        @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -51,58 +59,105 @@
 
         <div id="tab-home" class="tab-content main-grid" style="display: grid;">
             <div class="showcase-slider-container">
-                <div class="showcase-card" id="background-slider" style="height: 460px; background: #1a1a1a;"></div>
+                <button class="slider-arrow" style="left:15px;" onclick="changeSlide(-1)">&lsaquo;</button>
+                <div class="showcase-card" id="background-slider"></div>
+                <button class="slider-arrow" style="right:15px;" onclick="changeSlide(1)">&rsaquo;</button>
             </div>
             <div class="info-sidebar">
-                <div class="sidebar-title" style="color: #4ebd69; font-weight: bold;">2builders2users</div>
-                <p style="color: #a6a6a6; line-height: 1.8;">2b2u.net is a popular, modern Minecraft vanilla anarchy server. The map has been online for 5 years, preserving every player build and history.</p>
+                <div>
+                    <div class="sidebar-title">2builders2users</div>
+                    <div class="sidebar-desc">2b2u.net is a Minecraft survival server with a world that never resets, featuring PvP in a free-for-all, no-rules environment.</div>
+                </div>
+                <div>
+                    <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
+                    <button class="ip-connect-btn" onclick="copyServerIP()">2B2U.NET</button>
+                    <div id="copy-text" style="font-size: 14px; color: #8c8c8c; text-align: center;">Click to copy IP</div>
+                </div>
             </div>
         </div>
 
         <div id="tab-modifications" class="tab-content content-panel">
             <h2 class="panel-title">Modifications & Mechanics</h2>
+            <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted. We do not restrict your choice of software.</p>
             <ul class="panel-list">
                 <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
                 <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
-                <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0.</li>
+                <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0 for map variety.</li>
                 <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
-                <li><strong>Item Duplication:</strong> Patched to prevent instability.</li>
+                <li><strong>Item Duplication:</strong> Patched to prevent instability; duplication is allowed where possible.</li>
+                <li><strong>Maps:</strong> Generated with random, hidden IDs for privacy.</li>
+                <li><strong>PvP:</strong> Health and item status are hidden to prevent information retrieval.</li>
+                <li><strong>Nether & Void:</strong> Access to the roof and void areas is blocked with damage penalties.</li>
             </ul>
         </div>
 
         <div id="tab-terms" class="tab-content content-panel">
             <h2 class="panel-title">Terms of Service</h2>
-            <p>The server hosts the survival gamemode as provided by Mojang, an open ended sandbox, in which there are no inherent rules related to gameplay elements like PvP and griefing. All players must follow the Minecraft Usage Guidelines, the Minecraft Community Standards, and the Xbox Community Standards. Do not engage in any personal or real-life harassment, threats or bullying. Reports should be sent to support@2b2t.org.</p>
+            <p class="panel-text">The server hosts the survival gamemode as provided by Mojang, an open-ended sandbox with no inherent rules regarding PvP or griefing. This enables a chaotic, harsh world.</p>
+            <p class="panel-text">However, this does not incite toxicity or harassment outside the game. All players must follow the Minecraft Usage Guidelines, Minecraft Community Standards, and Xbox Community Standards.</p>
+            <h3 style="color: #fff; margin-bottom: 10px;">Gameplay & Community</h3>
+            <ul class="panel-list">
+                <li><strong>Disruption:</strong> Do not abuse exploits or bugs to cause server lag or disruption.</li>
+                <li><strong>Chat Spam:</strong> Do not flood, spam, or promote 3rd-party shops.</li>
+                <li><strong>Automation:</strong> Do not automate chat messages.</li>
+                <li><strong>Harassment:</strong> No personal, real-life threats, bullying, or harassment, in-game or externally.</li>
+                <li><strong>Hateful Content:</strong> No builds or speech relating to harmful ideas or hateful symbols.</li>
+            </ul>
+            <p class="panel-text"><strong>Punishments:</strong> Violations may result in temporary or permanent loss of chat privileges or server access. <strong>Reports:</strong> Send evidence to support@2b2t.org.</p>
         </div>
 
         <div id="tab-issues" class="tab-content content-panel">
             <h2 class="panel-title">Server Issues</h2>
-            <p>High latency and queue times are a natural part of the anarchy experience.</p>
+            <p class="panel-text">High latency and queue times are a natural part of the anarchy experience. We do not provide manual assistance for player events.</p>
         </div>
 
         <div id="tab-commands" class="tab-content content-panel">
             <h2 class="panel-title">Useful Commands</h2>
             <ul class="panel-list">
                 <li><strong>/kill</strong> - Kill yourself when stuck in a bad spawn location.</li>
-                <li><strong>/tpa &lt;player&gt;</strong> - Teleport to any player in the server as long as they accept it.</li>
+                <li><strong>/tpa &lt;player&gt;</strong> - Teleport to any player (requires acceptance).</li>
                 <li><strong>/deathmessagestoggle</strong> - Toggles the death messages.</li>
-                <li><strong>/sethome /home /delhome</strong> - Manage your homes.</li>
+                <li><strong>/sethome</strong> - Set your home.</li>
+                <li><strong>/home</strong> - Teleport to your home.</li>
+                <li><strong>/delhome</strong> - Delete your current home.</li>
             </ul>
         </div>
 
         <div id="tab-about" class="tab-content content-panel">
             <h2 class="panel-title">About</h2>
-            <p>The world is 5 years old, with a size exceeding 300 GB and over 7,000 unique player joins. Everything you see on 2b2u is the result of the players themselves.</p>
+            <p class="panel-text">2b2u.net is a Minecraft survival server with a world that never resets, featuring PvP enabled in a free-for-all, no-rules environment.</p>
+            <p class="panel-text">The world is 5 years old, with a size exceeding 300 GB and over 7,000 unique player joins. Everything you see on 2b2u is the result of the players themselves. There is no censorship, no safe spaces, and the history is permanently etched into the world file.</p>
         </div>
     </div>
+    <footer>2b2u.net &copy; 2026</footer>
 
     <script>
         function switchTab(t) {
             document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
             document.querySelectorAll('.nav-links li a').forEach(e => e.classList.remove('active'));
-            document.getElementById('tab-' + t).style.display = (t === 'home') ? 'grid' : 'block';
+            const target = document.getElementById('tab-' + t);
+            if(t === 'home') target.style.display = 'grid';
+            else target.style.display = 'block';
             document.getElementById('nav-' + t).classList.add('active');
         }
+        async function updatePlayerCount() {
+            try {
+                const res = await fetch('https://api.mcstatus.io/v2/status/java/2b2u.net');
+                const d = await res.json();
+                document.getElementById('player-count').innerText = d.online ? d.players.online : "Offline";
+            } catch { document.getElementById('player-count').innerText = "Offline"; }
+        }
+        function copyServerIP() {
+            navigator.clipboard.writeText("2b2u.net");
+            const c = document.getElementById("copy-text");
+            c.innerText = "IP Copied!";
+            setTimeout(() => c.innerText = "Click to copy IP", 2000);
+        }
+        const images = ['ss1.jpg', 'ss2.jpg', 'ss3.jpg', 'ss4.jpg', 'ss5.jpg'];
+        let idx = 0;
+        function updateSlider() { document.getElementById('background-slider').style.backgroundImage = `url('${images[idx]}')`; }
+        function changeSlide(d) { idx = (idx + d + images.length) % images.length; updateSlider(); }
+        document.addEventListener("DOMContentLoaded", () => { updateSlider(); updatePlayerCount(); setInterval(updatePlayerCount, 30000); });
     </script>
 </body>
 </html>
