@@ -451,36 +451,22 @@
             }
         }
 
-        // Global callback handler for the API tracker script
-        window.updateLivePlayers = function(data) {
+        // Corrected Fetching Engine
+        async function fetchServerStatusLive() {
             const countDisplay = document.getElementById('player-count');
-            if (!countDisplay) return;
-
-            if (data && data.online === true && data.players && data.players.online !== undefined) {
-                countDisplay.innerText = data.players.online;
-            } else {
-                countDisplay.innerText = "0"; // Displays zero instead of breaking layout text
-            }
-        };
-
-        // Live JSONP tracking engine built specifically for offline local files
-        function fetchServerStatusLive() {
-            const oldScript = document.getElementById('api-live-tracker');
-            if (oldScript) oldScript.remove();
-
-            const script = document.createElement('script');
-            script.id = 'api-live-tracker';
-            // Using player-count dedicated JSONP api endpoints
-            script.src = 'https://api.mcsrvstat.us/3/2b2u.net?callback=updateLivePlayers';
-            
-            script.onerror = function() {
-                const countDisplay = document.getElementById('player-count');
-                if (countDisplay && countDisplay.innerText === "...") {
-                    countDisplay.innerText = "Offline"; 
+            try {
+                const response = await fetch('https://api.mcsrvstat.us/3/2b2u.net');
+                const data = await response.json();
+                
+                if (data && data.online && data.players) {
+                    countDisplay.innerText = data.players.online;
+                } else {
+                    countDisplay.innerText = "0";
                 }
-            };
-
-            document.body.appendChild(script);
+            } catch (err) {
+                console.error("Fetch error:", err);
+                countDisplay.innerText = "Offline";
+            }
         }
 
         // Slideshow Array Carousel Elements
@@ -508,7 +494,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             updateSliderImage();
             fetchServerStatusLive(); 
-            setInterval(fetchServerStatusLive, 30000); // Tracks and updates every 30 seconds
+            setInterval(fetchServerStatusLive, 30000);
         });
     </script>
 </body>
