@@ -408,7 +408,7 @@
         2b2u &copy; 2026
     </footer>
 
-    <script>
+<script>
         // Tab Navigation Router
         function switchTab(tabName) {
             try {
@@ -451,14 +451,16 @@
             }
         }
 
-        // Corrected Fetching Engine
+        // Updated API Tracker using Minetools
         async function fetchServerStatusLive() {
             const countDisplay = document.getElementById('player-count');
             try {
-                const response = await fetch('https://api.mcsrvstat.us/3/2b2u.net');
+                // Using minetools API instead of mcsrvstat
+                const response = await fetch('https://api.minetools.eu/ping/2b2u.net');
                 const data = await response.json();
                 
-                if (data && data.online && data.players) {
+                // Minetools returns error if server is unreachable
+                if (data && data.error === undefined && data.players !== undefined) {
                     countDisplay.innerText = data.players.online;
                 } else {
                     countDisplay.innerText = "0";
