@@ -28,7 +28,11 @@
         .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 15px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
         .content-panel { background-color: #2b2b2b; padding: 50px 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .panel-title { font-size: 32px; font-weight: bold; margin-bottom: 25px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 20px; }
-        .panel-text { color: #cccccc; font-size: 14px; line-height: 1.7; }
+        .panel-text { color: #cccccc; font-size: 14px; line-height: 1.7; margin-bottom: 15px; }
+        .panel-list { list-style: none; color: #cccccc; font-size: 14px; line-height: 1.9; }
+        .panel-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .panel-list li::before { content: "•"; color: #4ebd69; font-weight: bold; position: absolute; left: 0; }
+        .panel-list li strong { color: #ffffff; }
         footer { margin-top: 50px; color: #666; font-size: 11px; width: 100%; max-width: 1100px; text-align: right; }
         @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
@@ -44,7 +48,7 @@
                 <li><a onclick="switchTab('commands')" id="nav-commands">Commands</a></li>
                 <li><a onclick="switchTab('about')" id="nav-about">About</a></li>
             </ul>
-            <a href="#" class="shop-btn">Shop</a>
+            <a href="https://store.2b2u.net" class="shop-btn">Shop</a>
         </nav>
 
         <div id="tab-home" class="tab-content main-grid" style="display: grid;">
@@ -67,22 +71,21 @@
         </div>
 
         <div id="tab-modifications" class="tab-content content-panel">
-            <h2 class="panel-title">Modifications & Server Mechanics</h2>
+            <h2 class="panel-title">Modifications & Mechanics</h2>
             <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted. We do not restrict your choice of software.</p>
-            <p class="panel-text">The server operates on custom software capable of handling hundreds of concurrent players. While it remains a survival hard-difficulty experience, we have implemented specific tweaks:</p>
+            <p class="panel-text">The server operates on custom software capable of handling hundreds of players. While remaining a survival hard-difficulty experience, we have implemented specific tweaks:</p>
             <ul class="panel-list">
                 <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
                 <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
                 <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0 for map variety.</li>
                 <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
-                <li><strong>Item Duplication:</strong> Patched to prevent instability, though duplication is inherently part of the game and allowed where possible.</li>
+                <li><strong>Item Duplication:</strong> Patched to prevent instability; duplication is allowed where possible.</li>
                 <li><strong>Maps:</strong> Generated with random, hidden IDs for privacy.</li>
-                <li><strong>PvP:</strong> Health and item status are hidden to prevent information retrieval by cheats.</li>
-                <li><strong>Nether & Void:</strong> Access to the roof and void areas is blocked with increased damage for out-of-bounds attempts.</li>
+                <li><strong>PvP:</strong> Health and item status are hidden to prevent information retrieval.</li>
+                <li><strong>Nether & Void:</strong> Access to the roof and void areas is blocked with damage penalties.</li>
                 <li><strong>Gameplay:</strong> Custom death messages, tweaked hunger/regeneration, and persistent Ender Pearls.</li>
-                <li><strong>Phantoms:</strong> Spawn only in the End, non-hostile unless provoked, and silent.</li>
+                <li><strong>Phantoms:</strong> Spawn only in the End, non-hostile unless provoked.</li>
             </ul>
-        </div>
         </div>
 
         <div id="tab-issues" class="tab-content content-panel">
