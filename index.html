@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2b2u</title>
+    <title>2b2u - Anarchy Server</title>
     <style>
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
@@ -71,7 +71,7 @@
             <div class="info-sidebar">
                 <div>
                     <div class="sidebar-title">2builders2users</div>
-                    <div class="sidebar-desc">2b2u.net is a premier Minecraft survival anarchy server. We offer an unfiltered, permanent world experience where player agency dictates the environment.</div>
+                    <div class="sidebar-desc">2b2u.net is a premier Minecraft survival anarchy server. We offer an unfiltered, permanent world experience where player agency dictates the environment. Whether you are a solo traveler or part of a faction, your mark is left on the history of this world.</div>
                 </div>
                 <div>
                     <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
@@ -83,37 +83,61 @@
 
         <div id="tab-modifications" class="tab-content content-panel">
             <h2 class="panel-title">Modifications & Mechanics</h2>
-            <p class="panel-text">All client-side modifications are permitted.</p>
+            <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted. We do not restrict your choice of software.</p>
             <ul class="panel-list">
-                <li><strong>World Generation:</strong> Uses a custom, modified vanilla terrain generator.</li>
-                <li><strong>Hostile Entities:</strong> Monster spawning logic increased for higher difficulty.</li>
+                <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
+                <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
+                <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0 for map variety.</li>
+                <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
+                <li><strong>Item Duplication:</strong> Patched to prevent instability; duplication is allowed where possible.</li>
+                <li><strong>Maps:</strong> Generated with random, hidden IDs for privacy.</li>
+                <li><strong>PvP:</strong> Health and item status are hidden to prevent information retrieval.</li>
+                <li><strong>Nether & Void:</strong> Access to the roof and void areas is blocked with damage penalties.</li>
             </ul>
         </div>
 
         <div id="tab-terms" class="tab-content content-panel">
             <h2 class="panel-title">Terms of Service</h2>
-            <p class="panel-text">Raw, unregulated survival. No safe spaces.</p>
+            <p class="panel-text">The server hosts the survival gamemode as provided by Mojang, an open-ended sandbox with no inherent rules regarding PvP or griefing. This enables a chaotic, harsh world.</p>
+            <p class="panel-text">However, this does not incite toxicity or harassment outside the game. All players must follow the Minecraft Usage Guidelines, Minecraft Community Standards, and Xbox Community Standards.</p>
+            <h3 style="color: #fff; margin-bottom: 10px;">Gameplay & Community</h3>
+            <ul class="panel-list">
+                <li><strong>Disruption:</strong> Do not abuse exploits or bugs to cause server lag or disruption.</li>
+                <li><strong>Chat Spam:</strong> Do not flood, spam, or promote 3rd-party shops.</li>
+                <li><strong>Automation:</strong> Do not automate chat messages.</li>
+                <li><strong>Harassment:</strong> No personal, real-life threats, bullying, or harassment, in-game or externally.</li>
+                <li><strong>Hateful Content:</strong> No builds or speech relating to harmful ideas or hateful symbols.</li>
+            </ul>
+            <p class="panel-text"><strong>Punishments:</strong> Violations may result in temporary or permanent loss of chat privileges or server access. <strong>Reports:</strong> Send evidence to support@2b2u.net.</p>
         </div>
 
         <div id="tab-issues" class="tab-content content-panel">
-            <h2 class="panel-title">Server Issues</h2>
+            <h2 class="panel-title">Server Issues & Reporting</h2>
+            <p class="panel-text">This page is for tracking any current issues, bugs, or limitations on the server with the current version of 1.21.11. The list is updated as issues are confirmed or fixed.</p>
             <ul class="panel-list">
-                <li><strong>Nether Roof Access:</strong> Resolved.</li>
-                <li><strong>Chunk Loading:</strong> In-progress optimization.</li>
+                <li><strong>Nether Roof:</strong> Fixed. Those on the roof will be teleported to spawn.</li>
+                <li><strong>Chunk Loading:</strong> Delays are currently In Progress.</li>
+                <li><strong>Connection Issues:</strong> Possible connection issues for those outside NA & EU - Fixed.</li>
             </ul>
+            <p class="panel-text">To report a bug or issue, please email <strong>bugs@2b2u.net</strong> or create a submission on the 2b2t subreddit. Please be as detailed as possible. Before reporting, test if you can reproduce the issue with an <strong>unmodified</strong> 1.21.4 installation to ensure your client modifications are not the cause.</p>
         </div>
 
         <div id="tab-commands" class="tab-content content-panel">
-            <h2 class="panel-title">Essential Commands</h2>
+            <h2 class="panel-title">Useful Commands</h2>
             <ul class="panel-list">
-                <li><strong>/kill</strong> - Escape inescapable traps.</li>
-                <li><strong>/tpa</strong> - Request teleportation.</li>
+                <li><strong>/kill</strong> - Kill yourself when stuck in a bad spawn location.</li>
+                <li><strong>/tpa &lt;player&gt;</strong> - Teleport to any player (requires acceptance).</li>
+                <li><strong>/deathmessagestoggle</strong> - Toggles the death messages.</li>
+                <li><strong>/sethome</strong> - Set your home.</li>
+                <li><strong>/home</strong> - Teleport to your home.</li>
+                <li><strong>/delhome</strong> - Delete your current home.</li>
             </ul>
         </div>
 
         <div id="tab-about" class="tab-content content-panel">
             <h2 class="panel-title">About</h2>
-            <p class="panel-text">5 years of history, 300GB+ world, 7,000+ players.</p>
+            <p class="panel-text">2b2u.net is a Minecraft survival server with a world that never resets, featuring PvP enabled in a free-for-all, no-rules environment.</p>
+            <p class="panel-text">The world is 5 years old, with a size exceeding 300 GB and over 7,000 unique player joins. Everything you see on 2b2u is the result of the players themselves. There is no censorship, no safe spaces, and the history is permanently etched into the world file.</p>
         </div>
     </div>
     <footer>2b2u.net &copy; 2026</footer>
@@ -127,7 +151,6 @@
             else target.style.display = 'block';
             document.getElementById('nav-' + t).classList.add('active');
         }
-
         async function updatePlayerCount() {
             try {
                 const res = await fetch('https://api.mcstatus.io/v2/status/java/2b2u.net');
@@ -135,24 +158,17 @@
                 document.getElementById('player-count').innerText = d.online ? d.players.online : "Offline";
             } catch { document.getElementById('player-count').innerText = "Offline"; }
         }
-
         function copyServerIP() {
             navigator.clipboard.writeText("2b2u.net");
             const c = document.getElementById("copy-text");
             c.innerText = "IP Copied!";
             setTimeout(() => c.innerText = "Click to copy IP", 2000);
         }
-
         const images = ['ss1.jpg', 'ss2.jpg', 'ss3.jpg', 'ss4.jpg', 'ss5.jpg'];
         let idx = 0;
         function updateSlider() { document.getElementById('background-slider').style.backgroundImage = `url('${images[idx]}')`; }
         function changeSlide(d) { idx = (idx + d + images.length) % images.length; updateSlider(); }
-        
-        document.addEventListener("DOMContentLoaded", () => { 
-            updateSlider(); 
-            updatePlayerCount(); 
-            setInterval(updatePlayerCount, 30000); 
-        });
+        document.addEventListener("DOMContentLoaded", () => { updateSlider(); updatePlayerCount(); setInterval(updatePlayerCount, 30000); });
     </script>
 </body>
 </html>
