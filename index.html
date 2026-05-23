@@ -452,24 +452,36 @@
         }
 
         // Updated API Tracker using Minetools
-        async function fetchServerStatusLive() {
+        async function fetchServerStatus() {
             const countDisplay = document.getElementById('player-count');
             try {
-                // Using minetools API instead of mcsrvstat
-                const response = await fetch('https://api.minetools.eu/ping/2b2u.net');
+                // Using a reliable public API endpoint
+                const response = await fetch('https://api.mcsrvstat.us/3/2b2u.net');
                 const data = await response.json();
                 
-                // Minetools returns error if server is unreachable
-                if (data && data.error === undefined && data.players !== undefined) {
+                // If the server is online, display the count; otherwise, show "Offline"
+                if (data && data.online) {
                     countDisplay.innerText = data.players.online;
                 } else {
-                    countDisplay.innerText = "0";
+                    countDisplay.innerText = "Offline";
                 }
-            } catch (err) {
-                console.error("Fetch error:", err);
+            } catch (e) {
+                // If the request fails, set the text to "Offline"
                 countDisplay.innerText = "Offline";
             }
         }
+
+        const slideImages = ['ss1.jpg', 'ss2.jpg', 'ss3.jpg', 'ss4.jpg', 'ss5.jpg'];
+        let currentSlideIndex = 0;
+        function updateSlider() { document.getElementById('background-slider').style.backgroundImage = `url('${slideImages[currentSlideIndex]}')`; }
+        function changeSlide(dir) { currentSlideIndex = (currentSlideIndex + dir + slideImages.length) % slideImages.length; updateSlider(); }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            updateSlider();
+            fetchServerStatus();
+            // Refresh every 30 seconds
+            setInterval(fetchServerStatus, 30000);
+        });
 
         // Slideshow Array Carousel Elements
         const slideImages = [
