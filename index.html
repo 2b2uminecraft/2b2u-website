@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2b2u - The oldest cracked anarchy server in Minecraft. No rules, no resets, total freedom.">
     <title>2builders2users - Anarchy Server</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
         body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; }
         .logo-container { margin: 30px 0 20px 0; text-align: center; }
-        .logo-image { max-width: 150px; height: auto; display: block; margin: 0 auto; }
+        .logo-image { max-width: 90px; height: auto; display: block; margin: 0 auto; }
         .wrapper { width: 100%; max-width: 1100px; padding: 0 20px; }
-        nav { background-color: #2b2b2b; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .nav-links { display: flex; list-style: none; flex-wrap: wrap; }
-        .nav-links li a { display: block; padding: 20px 24px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 13px; transition: all 0.2s; cursor: pointer; text-transform: uppercase; }
-        .nav-links li a.active, .nav-links li a:hover { color: #ffffff; background-color: #444444; }
-        .nav-links li a.active { background-color: #ffffff; color: #333333; }
-        .shop-btn { background-color: #729fcf; color: white !important; padding: 20px 35px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 13px; }
+        
+        nav { background-color: #2b2b2b; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #444; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a { display: block; padding: 15px 20px; color: #b3b3b3; text-decoration: none; font-weight: bold; font-size: 13px; cursor: pointer; text-transform: uppercase; }
+        .nav-links li a.active, .nav-links li a:hover { color: #ffffff; background-color: #3b3b3b; }
+        .shop-btn { background-color: #729fcf; color: white !important; padding: 15px 30px !important; text-transform: uppercase; text-decoration: none; font-weight: bold; font-size: 13px; }
+        
         .tab-content { display: none; }
-        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 25px; align-items: start; }
-        .showcase-slider-container { position: relative; height: 460px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; }
-        .showcase-card { width: 100%; height: 100%; background-size: cover; background-position: center; transition: background-image 0.3s ease-in-out; }
-        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0,0,0,0.5); color: white; border: none; width: 40px; height: 40px; cursor: pointer; z-index: 10; font-size: 24px; }
-        .info-sidebar { background-color: #2b2b2b; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); min-height: 460px; }
-        .sidebar-title { color: #4ebd69; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-        .sidebar-desc { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-        .player-counter { font-size: 16px; font-weight: bold; margin-bottom: 15px; }
-        .ip-connect-btn { background: #141414; border: 1px solid #444; color: #fff; width: 100%; padding: 15px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
-        .content-panel { background-color: #2b2b2b; padding: 40px; border-left: 3px solid #4ebd69; }
-        .panel-title { font-size: 28px; margin-bottom: 20px; color: #fff; }
-        .panel-text { color: #ccc; font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
-        footer { margin-top: 50px; color: #555; font-size: 12px; }
+        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; align-items: start; }
+        .showcase-slider-container { position: relative; height: 460px; background-color: #1a1a1a; }
+        .showcase-card { width: 100%; height: 100%; background-size: cover; background-position: center; }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 40px; height: 40px; cursor: pointer; }
+        
+        .info-sidebar { background-color: #2b2b2b; padding: 25px; display: flex; flex-direction: column; min-height: 460px; justify-content: flex-start; }
+        .sidebar-title { color: #4ebd69; font-size: 16px; font-weight: bold; margin-bottom: 15px; }
+        .sidebar-desc { color: #ccc; font-size: 13px; line-height: 1.5; margin-bottom: 25px; }
+        .player-counter { font-size: 14px; margin-bottom: 15px; }
+        .ip-connect-btn { background: #1a1a1a; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 5px; }
+        
+        .content-panel { background-color: #2b2b2b; padding: 40px; }
+        .panel-title { font-size: 20px; margin-bottom: 20px; color: #fff; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        .panel-text { color: #ccc; font-size: 13px; line-height: 1.6; }
+        
+        footer { margin-top: 50px; color: #555; font-size: 11px; width: 100%; max-width: 1100px; text-align: right; }
         @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -45,53 +48,45 @@
                 <li><a onclick="switchTab('commands')" id="nav-commands">Commands</a></li>
                 <li><a onclick="switchTab('about')" id="nav-about">About</a></li>
             </ul>
-            <a href="#" class="shop-btn">Donate</a>
+            <a href="#" class="shop-btn">Shop</a>
         </nav>
 
         <div id="tab-home" class="tab-content main-grid" style="display: grid;">
             <div class="showcase-slider-container">
-                <button class="slider-arrow" style="left:10px;" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="slider-arrow" style="left:10px;" onclick="changeSlide(-1)">&lsaquo;</button>
                 <div class="showcase-card" id="background-slider"></div>
-                <button class="slider-arrow" style="right:10px;" onclick="changeSlide(1)">&#10095;</button>
+                <button class="slider-arrow" style="right:10px;" onclick="changeSlide(1)">&rsaquo;</button>
             </div>
             <div class="info-sidebar">
-                <div class="sidebar-title">Server Status</div>
-                <div class="sidebar-desc">Welcome to the void. 2b2u is a permanent, unmoderated anarchy server. No rules, no resets, only survival.</div>
-                <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
+                <div class="sidebar-title">SERVER STATUS</div>
+                <div class="sidebar-desc">2builders2users is a permanent, unmoderated anarchy server. No rules, no resets, only survival.</div>
+                <div class="player-counter">PLAYERS ONLINE: <span id="player-count" style="color: #4ebd69;">...</span></div>
                 <button class="ip-connect-btn" onclick="copyServerIP()">2B2U.NET</button>
-                <div id="copy-text" style="font-size: 11px; color: #777; text-align: center;">Click to copy IP</div>
+                <div id="copy-text" style="font-size: 11px; color: #777; text-align: center; margin-top: 5px;">CLICK TO COPY IP</div>
             </div>
         </div>
 
         <div id="tab-modifications" class="tab-content content-panel">
-            <h2 class="panel-title">Modifications & Clients</h2>
-            <p class="panel-text">2b2u operates without an anti-cheat system. Because the server is entirely unmoderated, the use of hacked clients—including but not limited to Impact, Future, RusherHack, and Kami Blue—is not only permitted but encouraged for survival.</p>
-            <p class="panel-text">There are no bans for "illegal" items, exploits, or duping. You are responsible for your own defensive capabilities.</p>
+            <h2 class="panel-title">MODIFICATIONS</h2>
+            <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted. We do not restrict your choice of software.</p>
         </div>
 
         <div id="tab-issues" class="tab-content content-panel">
-            <h2 class="panel-title">Infrastructure & Issues</h2>
-            <p class="panel-text">High latency (ping), TPS (ticks per second) fluctuations, and login queues are a fundamental feature of the server's infrastructure. Due to the anarchy nature of the gameplay, administrative intervention is strictly limited to server-critical hardware failures.</p>
-            <p class="panel-text">If you encounter a "Connection Lost" error, it is likely a result of server load or a player-triggered exploit. Reconnecting is the standard solution.</p>
+            <h2 class="panel-title">SERVER ISSUES</h2>
+            <p class="panel-text">High latency and queue times are a natural part of the anarchy experience. We do not provide manual assistance for player-driven events.</p>
         </div>
 
         <div id="tab-commands" class="tab-content content-panel">
-            <h2 class="panel-title">Server Commands</h2>
-            <p class="panel-text">The command list is minimal to preserve the vanilla experience:</p>
-            <ul style="list-style: none; color: #ccc;">
-                <li style="margin-bottom: 10px;"><strong>/queue</strong> — View your position in the priority or standard login queue.</li>
-                <li style="margin-bottom: 10px;"><strong>/stats</strong> — View your player metrics, including join date and total deaths.</li>
-                <li style="margin-bottom: 10px;"><strong>/kill</strong> — Instant suicide to prevent capture or respawn at base.</li>
-            </ul>
+            <h2 class="panel-title">COMMANDS</h2>
+            <p class="panel-text">/queue, /stats, /kill.</p>
         </div>
 
         <div id="tab-about" class="tab-content content-panel">
-            <h2 class="panel-title">About the Server</h2>
-            <p class="panel-text">2builders2users (2b2u) was founded on the principles of absolute player freedom. Since its inception, the world map has never been reset, resulting in a world-file size that documents every base ever built, every road ever paved, and every monument ever destroyed.</p>
-            <p class="panel-text">The server has no rules, no staff, and no censorship. Everything you see, build, or destroy is the result of the players themselves.</p>
+            <h2 class="panel-title">ABOUT</h2>
+            <p class="panel-text">Established in the early days of cracked Minecraft, 2b2u has remained a bastion of chaos. Everything you see is the result of players.</p>
         </div>
     </div>
-    <footer>2b2u.net &copy; 2026 - Independent Anarchy Infrastructure</footer>
+    <footer>2b2u.net &copy; 2026</footer>
 
     <script>
         function switchTab(t) {
@@ -106,14 +101,14 @@
             try {
                 const res = await fetch('https://api.mcstatus.io/v2/status/java/2b2u.net');
                 const d = await res.json();
-                document.getElementById('player-count').innerText = d.online ? d.players.online : "Offline";
-            } catch { document.getElementById('player-count').innerText = "Offline"; }
+                document.getElementById('player-count').innerText = d.online ? d.players.online : "OFFLINE";
+            } catch { document.getElementById('player-count').innerText = "OFFLINE"; }
         }
         function copyServerIP() {
             navigator.clipboard.writeText("2b2u.net");
             const c = document.getElementById("copy-text");
-            c.innerText = "IP Copied!";
-            setTimeout(() => c.innerText = "Click to copy IP", 2000);
+            c.innerText = "COPIED!";
+            setTimeout(() => c.innerText = "CLICK TO COPY IP", 2000);
         }
         const images = ['ss1.jpg', 'ss2.jpg', 'ss3.jpg', 'ss4.jpg', 'ss5.jpg'];
         let idx = 0;
