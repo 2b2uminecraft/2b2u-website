@@ -8,7 +8,18 @@
     <style>
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background: #141414; color: #fff; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; min-height: 100vh; font-size: 16px; }
+        
+        body { 
+            background: #141414; color: #fff; display: flex; flex-direction: column; 
+            align-items: center; padding-bottom: 50px; min-height: 100vh; font-size: 16px; 
+            position: relative; 
+        }
+        
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('ss9.jpg'); background-size: cover; background-position: center;
+            filter: blur(15px); z-index: -1; opacity: 0.3;
+        }
         
         .logo-container { margin: 40px 0 30px 0; text-align: center; transition: transform 0.3s; cursor: pointer; }
         .logo-container:hover { transform: scale(1.05); }
@@ -42,6 +53,12 @@
         .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s; }
         .ip-connect-btn:hover { background: #4ebd69; color: #141414; }
         
+        .updates-container { width: 100%; max-width: 1100px; margin-top: 30px; }
+        .update-card { background-color: #2b2b2b; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .update-date { background-color: #3d4a3d; color: #4ebd69; display: inline-block; padding: 8px 12px; font-size: 14px; font-weight: bold; margin-bottom: 20px; }
+        .update-title { color: #ffffff; font-size: 24px; margin-bottom: 20px; }
+        .update-text { color: #cccccc; line-height: 1.6; font-size: 16px; }
+
         .content-panel { background-color: #2b2b2b; padding: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .panel-title { font-size: 38px; font-weight: bold; margin-bottom: 30px; color: #ffffff; border-bottom: 1px solid #444; padding-bottom: 25px; }
         .panel-text { color: #cccccc; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
@@ -81,9 +98,9 @@
             </div>
             <div class="info-sidebar">
                 <div>
-                    <div class="sidebar-title">2builders2users</div>
+                    <div class="sidebar-title">2builders2tools</div>
                     <div class="sidebar-subheading">old server</div>
-                    <div class="sidebar-desc">2b2u.net is a premier Minecraft survival anarchy server. We offer an unfiltered, permanent world experience where player agency dictates the environment. Whether you are a solo traveler or part of a group, your mark is left on the history of this world.</div>
+                    <div class="sidebar-desc">2builders2tools is a minecraft survival server with a world that never resets, with pvp enabled in a free for all no rules environment. The world is 15 years old, with a size of over 80,000 GBs and over 1 million players visiting.</div>
                 </div>
                 <div>
                     <hr class="stats-divider">
@@ -93,64 +110,20 @@
                 </div>
             </div>
         </div>
-
-        <div id="tab-modifications" class="tab-content content-panel">
-            <h2 class="panel-title">Modifications & Mechanics</h2>
-            <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted. We do not restrict your choice of software.</p>
-            <ul class="panel-list">
-                <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
-                <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
-                <li><strong>Player Spawning:</strong> Spawns occur within 2048 blocks of 0,0 for map variety.</li>
-                <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
-                <li><strong>Item Duplication:</strong> There is currently an item frame dupe; duplication is allowed where possible.</li>
-                <li><strong>Maps:</strong> Generated with random, hidden IDs for privacy.</li>
-                <li><strong>PvP:</strong> Health and item status are hidden to prevent information retrieval.</li>
-                <li><strong>Nether & Void:</strong> Access to the roof and void areas is blocked with damage penalties.</li>
-            </ul>
+        
+        <div class="updates-container">
+            <div class="update-card">
+                <div class="update-date">12 June 2025</div>
+                <h3 class="update-title">Update: Phantoms In The End</h3>
+                <p class="update-text">
+                    2b2t has reviewed the feedback on Phantoms, and changes have been made: * Phantoms will not spawn in the overworld * Phantoms will spawn in the end dimension, but will not be hostile unless attacked by a player * Phantom screeches are disabled until they are attacked... 
+                    <a href="#" style="color: #4ebd69; text-decoration: none;">Read More</a>
+                </p>
+            </div>
         </div>
 
-        <div id="tab-terms" class="tab-content content-panel">
-            <h2 class="panel-title">Terms of Service</h2>
-            <p class="panel-text">The server hosts the survival gamemode as provided by Mojang, an open-ended sandbox with no inherent rules regarding PvP or griefing. This enables a chaotic, harsh world.</p>
-            <p class="panel-text">However, this does not incite toxicity or harassment outside the game. All players must follow the Minecraft Usage Guidelines, Minecraft Community Standards, and Xbox Community Standards.</p>
-            <h3 style="color: #fff; margin-bottom: 10px;">Gameplay & Community</h3>
-            <ul class="panel-list">
-                <li><strong>Disruption:</strong> Do not abuse exploits or bugs to cause server lag or disruption, lag machines will be World Edited out.</li>
-            </ul>
-            <p class="panel-text"><strong>Punishments:</strong> Violations may result in temporary or permanent loss of chat privileges <strong>Reports:</strong> Send evidence to support@2b2u.net.</p>
         </div>
-
-        <div id="tab-issues" class="tab-content content-panel">
-            <h2 class="panel-title">Server Issues & Reporting</h2>
-            <p class="panel-text">This page is for tracking any current issues, bugs, or limitations on the server with the current version of 1.21.11. The list is updated as issues are confirmed or fixed.</p>
-            <ul class="panel-list">
-                <li><strong>Nether Roof:</strong> Fixed. Those on the roof will be teleported to spawn.</li>
-                <li><strong>Chunk Loading:</strong> Delays are currently In Progress.</li>
-                <li><strong>Connection Issues:</strong> Possible connection issues for those outside NA & EU - Fixed.</li>
-            </ul>
-            <p class="panel-text">To report a bug or issue, please email <strong>bugs@2b2u.net</strong> or create a submission on the 2b2t subreddit. Please be as detailed as possible. Before reporting, test if you can reproduce the issue with an <strong>unmodified</strong> 1.21.11 installation to ensure your client modifications are not the cause.</p>
-        </div>
-
-        <div id="tab-commands" class="tab-content content-panel">
-            <h2 class="panel-title">Useful Commands</h2>
-            <ul class="panel-list">
-                <li><strong>/kill</strong> - Kill yourself when stuck in a bad spawn location.</li>
-                <li><strong>/tpa &lt;player&gt;</strong> - Teleport to any player (requires acceptance).</li>
-                <li><strong>/deathmessagestoggle</strong> - Toggles the death messages.</li>
-                <li><strong>/sethome</strong> - Set your home.</li>
-                <li><strong>/home</strong> - Teleport to your home.</li>
-                <li><strong>/delhome</strong> - Delete your current home.</li>
-            </ul>
-        </div>
-
-        <div id="tab-about" class="tab-content content-panel">
-            <h2 class="panel-title">About</h2>
-            <p class="panel-text">2b2u.net is a Minecraft survival server with a world that never resets, featuring PvP enabled in a free-for-all, no-rules environment.</p>
-            <p class="panel-text">The world is 5 years old, with a size exceeding 300 GB and over 8,000 unique player joins. Everything you see on 2b2u is the result of the players themselves. There is no censorship, no safe spaces, and the history is permanently etched into the world file.</p>
-        </div>
-    </div>
     <footer>2b2u.net &copy; 2026</footer>
-
     <script>
         function switchTab(t) {
             document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
