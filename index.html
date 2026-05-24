@@ -36,7 +36,9 @@
         .shop-btn:hover { background-color: #5d8ab5; }
         
         .tab-content { display: none; animation: fadeIn 0.5s ease-out forwards; }
+        /* Adjusted grid to handle the full width updates section */
         .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; align-items: start; }
+        .home-grid-container { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; }
         
         .showcase-slider-container { position: relative; height: 500px; background-color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.6); overflow: hidden; border-radius: 4px; display: flex; flex-direction: column; }
         .showcase-card { width: 100%; height: 440px; background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; }
@@ -53,7 +55,7 @@
         .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s; }
         .ip-connect-btn:hover { background: #4ebd69; color: #141414; }
         
-        .updates-container { width: 100%; max-width: 1100px; margin-top: 30px; }
+        .updates-container { margin-top: 30px; grid-column: span 2; }
         .update-card { background-color: #2b2b2b; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .update-date { background-color: #3d4a3d; color: #4ebd69; display: inline-block; padding: 8px 12px; font-size: 14px; font-weight: bold; margin-bottom: 20px; }
         .update-title { color: #ffffff; font-size: 24px; margin-bottom: 20px; }
@@ -68,7 +70,7 @@
         .panel-list li strong { color: #ffffff; }
 
         footer { margin-top: 60px; color: #666; font-size: 13px; width: 100%; max-width: 1100px; text-align: right; }
-        @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 950px) { .home-grid-container { grid-template-columns: 1fr; } .updates-container { grid-column: span 1; } }
     </style>
 </head>
 <body>
@@ -89,97 +91,43 @@
             <a href="https://2b2u.craftingstore.net/" class="shop-btn">Shop</a>
         </nav>
 
-        <div id="tab-home" class="tab-content main-grid" style="display: grid;">
-            <div class="showcase-slider-container">
-                <button class="slider-arrow" style="left:20px;" onclick="changeSlide(-1)">&lsaquo;</button>
-                <div class="showcase-card" id="background-slider"></div>
-                <div class="slider-title" id="slider-title">Loading...</div>
-                <button class="slider-arrow" style="right:20px;" onclick="changeSlide(1)">&rsaquo;</button>
-            </div>
-            <div class="info-sidebar">
-                <div>
-                    <div class="sidebar-title">2builders2tools</div>
-                    <div class="sidebar-subheading">old server</div>
-                    <div class="sidebar-desc">2builders2tools is a minecraft survival server with a world that never resets, with pvp enabled in a free for all no rules environment. The world is 15 years old, with a size of over 80,000 GBs and over 1 million players visiting.</div>
+        <div id="tab-home" class="tab-content" style="display: grid;">
+            <div class="home-grid-container">
+                <div class="showcase-slider-container">
+                    <button class="slider-arrow" style="left:20px;" onclick="changeSlide(-1)">&lsaquo;</button>
+                    <div class="showcase-card" id="background-slider"></div>
+                    <div class="slider-title" id="slider-title">Loading...</div>
+                    <button class="slider-arrow" style="right:20px;" onclick="changeSlide(1)">&rsaquo;</button>
                 </div>
-                <div>
-                    <hr class="stats-divider">
-                    <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
-                    <button class="ip-connect-btn" onclick="copyServerIP()">2B2U.NET</button>
-                    <div id="copy-text" style="font-size: 14px; color: #8c8c8c; text-align: center;">Click to copy IP</div>
+                <div class="info-sidebar">
+                    <div>
+                        <div class="sidebar-title">2builders2tools</div>
+                        <div class="sidebar-subheading">old server</div>
+                        <div class="sidebar-desc">2builders2tools is a minecraft survival server with a world that never resets, with pvp enabled in a free for all no rules environment. The world is 15 years old, with a size of over 80,000 GBs and over 1 million players visiting.</div>
+                    </div>
+                    <div>
+                        <hr class="stats-divider">
+                        <div class="player-counter">Players Online: <span id="player-count" style="color: #4ebd69;">...</span></div>
+                        <button class="ip-connect-btn" onclick="copyServerIP()">2B2U.NET</button>
+                        <div id="copy-text" style="font-size: 14px; color: #8c8c8c; text-align: center;">Click to copy IP</div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="updates-container">
-            <div class="update-card">
-                <div class="update-date">12 June 2025</div>
-                <h3 class="update-title">Update: Phantoms In The End</h3>
-                <p class="update-text">
-                    2b2t has reviewed the feedback on Phantoms, and changes have been made: * Phantoms will not spawn in the overworld * Phantoms will spawn in the end dimension, but will not be hostile unless attacked by a player * Phantom screeches are disabled until they are attacked... 
-                    <a href="#" style="color: #4ebd69; text-decoration: none;">Read More</a>
-                </p>
+                <div class="updates-container">
+                    <div class="update-card">
+                        <div class="update-date">12 June 2025</div>
+                        <h3 class="update-title">Update: Phantoms In The End</h3>
+                        <p class="update-text">
+                            2b2t has reviewed the feedback on Phantoms, and changes have been made: * Phantoms will not spawn in the overworld * Phantoms will spawn in the end dimension, but will not be hostile unless attacked by a player * Phantom screeches are disabled until they are attacked... 
+                            <a href="#" style="color: #4ebd69; text-decoration: none;">Read More</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div id="tab-modifications" class="tab-content content-panel">...</div>
         </div>
+    
     <footer>2b2u.net &copy; 2026</footer>
-    <script>
-        function switchTab(t) {
-            document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
-            document.querySelectorAll('.nav-links li a').forEach(e => e.classList.remove('active'));
-            const target = document.getElementById('tab-' + t);
-            if(t === 'home') target.style.display = 'grid';
-            else target.style.display = 'block';
-            document.getElementById('nav-' + t).classList.add('active');
-        }
-        async function updatePlayerCount() {
-            try {
-                const res = await fetch('https://api.mcstatus.io/v2/status/java/2b2u.net');
-                const d = await res.json();
-                document.getElementById('player-count').innerText = d.online ? d.players.online : "Offline";
-            } catch { document.getElementById('player-count').innerText = "Offline"; }
-        }
-        function copyServerIP() {
-            navigator.clipboard.writeText("2b2u.net");
-            const c = document.getElementById("copy-text");
-            c.innerText = "IP Copied!";
-            setTimeout(() => c.innerText = "Click to copy IP", 2000);
-        }
-        
-        const data = [
-            {img: 'ss1.jpg', title: 'Overlooking spawn in the western direction'},
-            {img: 'ss2.jpg', title: 'Looking up at 0 0'},
-            {img: 'ss6.jpg', title: 'Nether Hub'},
-            {img: 'ss4.jpg', title: 'Statue of Jesus - Apr, 2026'},
-            {img: 'ss7.jpg', title: 'Obsidian Skull - May, 2026'}
-        ];
-        
-        let idx = 0;
-        let slideTimer;
-
-        function updateSlider() { 
-            document.getElementById('background-slider').style.backgroundImage = `url('${data[idx].img}')`;
-            document.getElementById('slider-title').innerText = data[idx].title;
-        }
-
-        function changeSlide(d) { 
-            idx = (idx + d + data.length) % data.length; 
-            updateSlider();
-            resetTimer();
-        }
-
-        function resetTimer() {
-            clearInterval(slideTimer);
-            slideTimer = setInterval(() => changeSlide(1), 5000);
-        }
-
-        document.addEventListener("DOMContentLoaded", () => { 
-            updateSlider(); 
-            updatePlayerCount(); 
-            setInterval(updatePlayerCount, 30000); 
-            resetTimer();
-        });
-    </script>
-</body>
+    </body>
 </html>
