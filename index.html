@@ -53,7 +53,7 @@
         .ip-connect-btn { background: transparent; border: 1px solid #4ebd69; color: #4ebd69; width: 100%; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s; }
         .ip-connect-btn:hover { background: #4ebd69; color: #141414; }
         
-        .updates-container { margin-top: 30px; width: 100%; }
+        .updates-container { margin-top: 30px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
         .update-card { background-color: #2b2b2b; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .update-date { background-color: #3d4a3d; color: #4ebd69; display: inline-block; padding: 8px 12px; font-size: 14px; font-weight: bold; margin-bottom: 20px; }
         .update-title { color: #ffffff; font-size: 24px; margin-bottom: 20px; }
@@ -111,24 +111,53 @@
                     </div>
                 </div>
             </div>
+            
             <div class="updates-container">
+                <div class="update-card">
+                    <div class="update-date">19 December 2025</div>
+                    <h3 class="update-title">Transparency on Recent Changes</h3>
+                    <p class="update-text">As many of you may have noticed, there have been some adjustments to the Terms page. The server's terms are to ensure that 2b2t provides a fun and safe environment for all players and to comply with the official guidelines from Mojang / Microsoft...</p>
+                </div>
                 <div class="update-card">
                     <div class="update-date">12 June 2025</div>
                     <h3 class="update-title">Update: Phantoms In The End</h3>
-                    <p class="update-text">
-                        2b2t has reviewed the feedback on Phantoms, and changes have been made: * Phantoms will not spawn in the overworld * Phantoms will spawn in the end dimension, but will not be hostile unless attacked by a player * Phantom screeches are disabled until they are attacked... 
-                        <a href="#" style="color: #4ebd69; text-decoration: none;">Read More</a>
-                    </p>
+                    <p class="update-text">2b2t has reviewed the feedback on Phantoms, and changes have been made: * Phantoms will not spawn in the overworld * Phantoms will spawn in the end dimension, but will not be hostile unless attacked by a player...</p>
                 </div>
             </div>
         </div>
 
         <div id="tab-modifications" class="tab-content content-panel">
             <h2 class="panel-title">Modifications & Mechanics</h2>
-            <p class="panel-text">Because 2b2u is a no-rules environment, all client-side modifications are permitted.</p>
+            <ul class="panel-list">
+                <li><strong>World Generation:</strong> Uses a modified vanilla generator to maintain map integrity.</li>
+                <li><strong>Monsters:</strong> Reworked spawning logic to increase density near players.</li>
+                <li><strong>Anticheat:</strong> Generally open, but blocks harmful movement exploits.</li>
+            </ul>
         </div>
 
+        <div id="tab-terms" class="tab-content content-panel">
+            <h2 class="panel-title">Terms of Service</h2>
+            <p class="panel-text">All players must follow the Minecraft Usage Guidelines, Minecraft Community Standards, and Xbox Community Standards.</p>
         </div>
+
+        <div id="tab-issues" class="tab-content content-panel">
+            <h2 class="panel-title">Server Issues</h2>
+            <p class="panel-text">This page is for tracking any current issues or bugs.</p>
+        </div>
+
+        <div id="tab-commands" class="tab-content content-panel">
+            <h2 class="panel-title">Useful Commands</h2>
+            <ul class="panel-list">
+                <li><strong>/kill</strong> - Kill yourself when stuck.</li>
+                <li><strong>/tpa</strong> - Teleport to player.</li>
+            </ul>
+        </div>
+
+        <div id="tab-about" class="tab-content content-panel">
+            <h2 class="panel-title">About</h2>
+            <p class="panel-text">2b2u.net is a Minecraft survival server with a world that never resets, featuring PvP enabled in a free-for-all, no-rules environment.</p>
+        </div>
+    </div>
     
     <footer>2b2u.net &copy; 2026</footer>
     <script>
