@@ -5,96 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2b2u</title>
     <style>
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        
+        /* Set background image */
         body { 
-            background: #141414; color: #fff; display: flex; flex-direction: column; 
-            align-items: center; padding-bottom: 50px; min-height: 100vh; 
-            position: relative;
+            background: #141414; color: #fff; margin: 0; padding: 0; 
+            font-family: Arial, sans-serif;
+            background-image: url('ss9.jpg'); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
         }
 
-        /* Set ss9.jpg as the background */
+        /* Dark overlay for readability */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('ss9.jpg'); background-size: cover; background-position: center;
-            filter: blur(8px); z-index: -1; opacity: 0.3;
+            background: rgba(20, 20, 20, 0.8); z-index: -1;
+        }
+
+        .wrapper { width: 100%; max-width: 1100px; margin: auto; padding: 0 20px; }
+        .tab-content { display: none; }
+        #tab-home { display: grid !important; } /* Default visible */
+        
+        /* Layout Grid */
+        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; margin-bottom: 30px; }
+        
+        /* Updates Section */
+        .updates-container { 
+            background: #2b2b2b; padding: 30px; 
+            border-top: 2px solid #4ebd69;
         }
         
-        .logo-container { margin: 40px 0 30px 0; text-align: center; cursor: pointer; }
-        .logo-image { max-width: 120px; height: auto; }
-        
-        .wrapper { width: 100%; max-width: 1100px; padding: 0 20px; }
-        
-        nav { background-color: #333333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li a { display: block; padding: 25px 30px; color: #b3b3b3; text-decoration: none; font-weight: bold; cursor: pointer; }
-        .nav-links li a:hover { color: #ffffff; background-color: #444444; }
-        .nav-links li a.active { background-color: #ffffff; color: #333333; }
-        .shop-btn { background-color: #729fcf; color: white !important; padding: 25px 50px !important; text-decoration: none; font-weight: bold; }
-        
-        .tab-content { display: none; animation: fadeIn 0.5s ease-out forwards; }
-        .main-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; }
-        
-        /* Components */
-        .showcase-slider-container { position: relative; height: 500px; background: #1a1a1a; }
-        .showcase-card { width: 100%; height: 440px; background-size: cover; background-position: center; transition: background 0.5s; }
-        .slider-title { height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #4ebd69; background: #2b2b2b; }
-        .slider-arrow { position: absolute; top: 220px; background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px; cursor: pointer; }
-        
-        .info-sidebar { background: #2b2b2b; padding: 45px; display: flex; flex-direction: column; justify-content: space-between; }
-        
-        /* Updates Section Styling */
-        .updates-container { margin-top: 30px; background: #2b2b2b; padding: 30px; }
-        .update-date { color: #4ebd69; font-weight: bold; margin-bottom: 10px; }
-        .update-title { margin-bottom: 15px; }
-
-        @media (max-width: 950px) { .main-grid { grid-template-columns: 1fr; } }
+        /* ... keep your existing nav/slider styles here ... */
     </style>
 </head>
 <body>
-    <div class="logo-container" onclick="window.location.reload();">
-        <img src="logo.jpg" alt="2b2u" class="logo-image">
-    </div>
-
     <div class="wrapper">
-        <nav>
-            <ul class="nav-links">
-                <li><a onclick="switchTab('home')" id="nav-home" class="active">Home</a></li>
-                </ul>
-            <a href="#" class="shop-btn">SHOP</a>
-        </nav>
-
-        <div id="tab-home" class="tab-content" style="display: grid;">
+        <div id="tab-home" class="tab-content">
             <div class="main-grid">
-                <div class="showcase-slider-container">
-                    <button class="slider-arrow" style="left:0;" onclick="changeSlide(-1)">&lsaquo;</button>
-                    <div class="showcase-card" id="background-slider"></div>
-                    <div class="slider-title" id="slider-title">Loading...</div>
-                    <button class="slider-arrow" style="right:0;" onclick="changeSlide(1)">&rsaquo;</button>
-                </div>
-                <div class="info-sidebar">
-                    <div>
-                        <div class="sidebar-title">2builders2tools</div>
-                        <div class="sidebar-desc">Anarchy server details...</div>
-                    </div>
-                </div>
+                <div class="showcase-slider-container">...</div>
+                <div class="info-sidebar">...</div>
             </div>
 
             <div class="updates-container">
                 <div class="update-date">12 June 2025</div>
                 <h3 class="update-title">Update: Phantoms In The End</h3>
-                <p>2b2t has reviewed feedback on Phantoms...</p>
+                <p>2b2t has reviewed the feedback on Phantoms...</p>
             </div>
         </div>
     </div>
-
-    <script>
-        function switchTab(t) {
-            document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
-            document.getElementById('tab-' + t).style.display = (t === 'home') ? 'grid' : 'block';
-        }
-        // ... rest of your JS
-    </script>
 </body>
 </html>
